@@ -1,0 +1,73 @@
+/* Write your CSS here */
+.match-image {
+  height: 120px;
+  width: 120px;
+}
+.competing-title {
+  color: #ffffff;
+  font-size: 25px;
+  font-family: 'Bree Serif';
+  font-weight: 500;
+  margin-bottom: 25px;
+  width: 150px;
+  text-align: center;
+}
+
+.match-list-item {
+  list-style-type: none;
+  border-radius: 8px;
+  background-color: #0f172a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  width: 25%;
+  padding: 20px;
+}
+.competing-result {
+  color: #ffffff;
+  font-size: 15px;
+  font-family: 'Bree Serif';
+  width: 150px;
+  text-align: center;
+}
+.match-lost-status {
+  color: #e31a1a;
+  font-size: 18px;
+  font-family: 'Bree Serif';
+}
+.match-won-status {
+  color: #18ed66;
+  font-size: 18px;
+  font-family: 'Bree Serif';
+}
+@media screen and (max-width: 767px) {
+  .match-image {
+    height: 60px;
+    width: 60px;
+  }
+  .competing-title {
+    font-size: 15px;
+    margin-bottom: 25px;
+    width: 100px;
+    height: 40px;
+  }
+  .competing-result {
+    font-size: 11px;
+    width: 80px;
+    height: 45px;
+  }
+
+  .match-won-status {
+    font-size: 14px;
+  }
+  .match-lost-status {
+    font-size: 14px;
+  }
+  .match-list-item {
+    width: 47%;
+    padding: 5px;
+    margin: 3px;
+    padding-top: 15px;
+  }
+}

@@ -1,0 +1,152 @@
+/* Write your CSS here */
+.team-name {
+  color: #ffffff;
+  font-size: 15px;
+  font-family: 'Bree Serif';
+  font-weight: 400;
+}
+.latest-match-container {
+  background-color: #1e293b;
+  border: none;
+  border-radius: 5px;
+  width: 90%;
+  display: flex;
+}
+.date {
+  color: #ffffff;
+  font-size: 15px;
+  font-family: 'Bree Serif';
+  font-weight: 400;
+}
+.venue {
+  color: #ffffff;
+  font-size: 12px;
+  font-family: 'Bree Serif';
+}
+.result {
+  color: #ffffff;
+  font-size: 12px;
+  font-family: 'Bree Serif';
+}
+.ipl-team-container {
+  width: 50%;
+}
+.competing-team-container {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 50px;
+}
+
+.competing-team-logo {
+  height: 150px;
+  width: 150px;
+}
+.first-innings {
+  color: #ffffff;
+  font-size: 16px;
+  font-family: 'Bree Serif';
+  font-weight: 400;
+}
+.first-innings-value {
+  color: #ffffff;
+  font-size: 12px;
+  font-family: 'Roboto';
+}
+.man-of-match {
+  color: #ffffff;
+  font-size: 16px;
+  font-family: 'Bree Serif';
+}
+.man-of-match-value {
+  color: #ffffff;
+  font-size: 12px;
+  font-family: 'Roboto';
+}
+.innings-container {
+  width: 20%;
+}
+.latest-match {
+  display: flex;
+
+  width: 80%;
+}
+.line {
+  display: none;
+}
+.umpires {
+  color: #ffffff;
+  font-size: 16px;
+  font-family: 'Bree Serif';
+  font-weight: bold;
+}
+.umpires-value {
+  color: #ffffff;
+  font-size: 12px;
+  font-family: 'Bree Serif';
+}
+@media screen and (max-width: 767px) {
+  .latest-match-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+  .ipl-team-container {
+    width: 70%;
+  }
+  .competing-team-container {
+    width: 30%;
+    margin-left: 20px;
+  }
+  .line {
+    display: block;
+    border: 2px solid #475569;
+    width: 100%;
+  }
+  .competing-team-logo {
+    height: 60px;
+    width: 60px;
+  }
+  .innings-container {
+    width: 100%;
+  }
+  .latest-match {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+@media screen and (min-width: 768px) {
+  .innings-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    text-align: right;
+  }
+  .team-name {
+    color: #ffffff;
+    font-size: 30px;
+    font-family: 'Bree Serif';
+    font-weight: 400;
+    margin-bottom: 30px;
+  }
+  .date {
+    font-size: 25px;
+  }
+  .venue {
+    font-size: 15px;
+  }
+  .result {
+    font-size: 14px;
+    margin-top: 20px;
+  }
+  .ipl-team-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .latest-match-container {
+    padding: 50px;
+  }
+}

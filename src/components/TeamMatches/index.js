@@ -4,7 +4,7 @@ import {Component} from 'react'
 import './index.css'
 
 import Loader from 'react-loader-spinner'
-import {PieChart, Pie, Legend, Cell, ResponsiveContainer} from 'recharts'
+import {PieChart, Pie, Legend, Cell} from 'recharts'
 
 import LatestMatch from '../LatestMatch'
 
@@ -133,7 +133,7 @@ class TeamMatches extends Component {
           Back
         </button>
         <div className="pie-container">
-          <PieChart>
+          <PieChart width={300} height={300}>
             <Pie
               cx="70%"
               cy="40%"
@@ -145,7 +145,7 @@ class TeamMatches extends Component {
               dataKey="value"
               nameKey="name"
             >
-              <Cell name="Won" fill="#fecba6" />
+              <Cell name="Won" fill="#fecba6"  />
               <Cell name="Lost" fill="#b3d23f" />
               <Cell name="Drawn" fill="#a44c9e" />
             </Pie>
@@ -154,6 +154,9 @@ class TeamMatches extends Component {
               layout="vertical"
               verticalAlign="middle"
               align="right"
+              wrapperStyle={{
+                   paddingLeft: "20px",
+                }}
             />
           </PieChart>
         </div>

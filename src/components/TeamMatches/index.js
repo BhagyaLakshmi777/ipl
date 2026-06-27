@@ -4,6 +4,8 @@ import {Component} from 'react'
 import './index.css'
 
 import Loader from 'react-loader-spinner'
+import {PieChart, Pie, Legend, Cell, ResponsiveContainer} from 'recharts'
+
 import LatestMatch from '../LatestMatch'
 
 import MatchCard from '../MatchCard'
@@ -47,7 +49,6 @@ class TeamMatches extends Component {
       teamBannerUrl: data1.team_banner_url,
     }
     const {latestMatchDetails} = updatedData
-    console.log(latestMatchDetails)
 
     const latestMatch = {
       competingTeam: latestMatchDetails.competing_team,
@@ -77,7 +78,6 @@ class TeamMatches extends Component {
       secondInnings: each.second_innings,
       venue: each.venue,
     }))
-    console.log(updateRecentMatches)
     this.setState({
       latestMatchDetails: latestMatch,
       recentMatches: updateRecentMatches,
@@ -85,15 +85,31 @@ class TeamMatches extends Component {
       isLoader: false,
     })
   }
+  onClickBack = () => {
+    const {history} = this.props
+    history.replace('/')
+  }
 
   render() {
-    const {
-      latestMatchDetails,
-      recentMatches,
-      teamBannerUrl,
-      isLoader,
-    } = this.state
-    console.log(latestMatchDetails)
+    const {latestMatchDetails, recentMatches, teamBannerUrl, isLoader} =
+      this.state
+    const chartData = [
+      {
+        name: 'Won',
+        value: recentMatches.filter(item => item.matchStatus === 'Won').length,
+      },
+      {
+        name: 'Lost',
+        value: recentMatches.filter(item => item.matchStatus === 'Lost').length,
+      },
+      {
+        name: 'Drawn',
+        value: recentMatches.filter(item => item.matchStatus === 'Drawn')
+          .length,
+      },
+    ]
+    console.log(chartData)
+
     return isLoader ? (
       <div className="loader" testid="loader">
         <Loader type="Oval" color="#ffffff" height={50} width={50} />
@@ -113,6 +129,34 @@ class TeamMatches extends Component {
             <MatchCard matchDetails={each} key={each.id} />
           ))}
         </ul>
+        <button type="button" className="back-btn" onClick={this.onClickBack}>
+          Back
+        </button>
+        <div className="pie-container">
+          <PieChart>
+            <Pie
+              cx="70%"
+              cy="40%"
+              data={chartData}
+              startAngle={0}
+              endAngle={360}
+              innerRadius="40%"
+              outerRadius="70%"
+              dataKey="value"
+              nameKey="name"
+            >
+              <Cell name="Won" fill="#fecba6" />
+              <Cell name="Lost" fill="#b3d23f" />
+              <Cell name="Drawn" fill="#a44c9e" />
+            </Pie>
+            <Legend
+              iconType="circle"
+              layout="vertical"
+              verticalAlign="middle"
+              align="right"
+            />
+          </PieChart>
+        </div>
       </div>
     )
   }

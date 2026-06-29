@@ -4,7 +4,7 @@ import {Component} from 'react'
 import './index.css'
 
 import Loader from 'react-loader-spinner'
-import {PieChart, Pie, Legend, Cell} from 'recharts'
+import {PieChart, Pie, Legend, Cell, ResponsiveContainer} from 'recharts'
 
 import LatestMatch from '../LatestMatch'
 
@@ -89,26 +89,38 @@ class TeamMatches extends Component {
     const {history} = this.props
     history.replace('/')
   }
+  generatePieChartData = () => {
+    const {latestMatchDetails, recentMatches} = this.state
+    let won = 0
+    let lost = 0
+    let draw = 0
+    if (latestMatchDetails.matchStatus === 'Won') {
+      won += 1
+    } else if (latestMatchDetails.matchStatus === 'Lost') {
+      lost += 1
+    } else {
+      draw += 1
+    }
 
+    recentMatches.forEach(match => {
+      if (match.matchStatus === 'Won') {
+        won += 1
+      } else if (match.matchStatus === 'Lost') {
+        lost += 1
+      } else {
+        draw += 1
+      }
+    })
+
+    return [
+      {name: 'Won', value: won},
+      {name: 'Lost', value: lost},
+      {name: 'Draw', value: draw},
+    ]
+  }
   render() {
     const {latestMatchDetails, recentMatches, teamBannerUrl, isLoader} =
       this.state
-    const chartData = [
-      {
-        name: 'Won',
-        value: recentMatches.filter(item => item.matchStatus === 'Won').length,
-      },
-      {
-        name: 'Lost',
-        value: recentMatches.filter(item => item.matchStatus === 'Lost').length,
-      },
-      {
-        name: 'Drawn',
-        value: recentMatches.filter(item => item.matchStatus === 'Drawn')
-          .length,
-      },
-    ]
-    console.log(chartData)
 
     return isLoader ? (
       <div className="loader" testid="loader">
@@ -133,32 +145,34 @@ class TeamMatches extends Component {
           Back
         </button>
         <div className="pie-container">
-          <PieChart width={300} height={300}>
-            <Pie
-              cx="70%"
-              cy="40%"
-              data={chartData}
-              startAngle={0}
-              endAngle={360}
-              innerRadius="40%"
-              outerRadius="70%"
-              dataKey="value"
-              nameKey="name"
-            >
-              <Cell name="Won" fill="#fecba6"  />
-              <Cell name="Lost" fill="#b3d23f" />
-              <Cell name="Drawn" fill="#a44c9e" />
-            </Pie>
-            <Legend
-              iconType="circle"
-              layout="vertical"
-              verticalAlign="middle"
-              align="right"
-              wrapperStyle={{
-                   paddingLeft: "20px",
+          <ResponsiveContainer width={1000} height={300}>
+            <PieChart>
+              <Pie
+                cx="70%"
+                cy="40%"
+                data={this.generatePieChartData()}
+                startAngle={0}
+                endAngle={360}
+                innerRadius="40%"
+                outerRadius="70%"
+                dataKey="value"
+                nameKey = "name"
+              >
+                <Cell name="Won" fill="#fecba6" />
+                <Cell name="Lost" fill="#b3d23f" />
+                <Cell name="Draw" fill="#a44c9e" />
+              </Pie>
+              <Legend
+                iconType="circle"
+                layout="vertical"
+                verticalAlign="middle"
+                align="right"
+                wrapperStyle={{
+                  paddingLeft: '20px',
                 }}
-            />
-          </PieChart>
+              />
+            </PieChart>
+          </ResponsiveContainer>
         </div>
       </div>
     )

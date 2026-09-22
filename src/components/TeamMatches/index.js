@@ -122,8 +122,7 @@ class TeamMatches extends Component {
   }
 
   render() {
-    const {latestMatchDetails, recentMatches, teamBannerUrl, isLoader} =
-      this.state
+    const {latestMatchDetails, recentMatches, teamBannerUrl, isLoader} = this.state
 
     const chartData = this.generatePieChartData()
 

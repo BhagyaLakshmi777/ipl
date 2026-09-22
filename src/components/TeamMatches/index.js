@@ -113,17 +113,20 @@ class TeamMatches extends Component {
     })
 
     return [
-      {name: 'Won', value: won},
-      {name: 'Lost', value: lost},
-      {name: 'Draw', value: draw},
+
+      {name: 'Won', value: won, color: 'blue'},
+      {name: 'Lost', value: lost, color: 'green'},
+      {name: 'Draw', value: draw, color: 'white'},
     ]
   }
   render() {
     const {latestMatchDetails, recentMatches, teamBannerUrl, isLoader} =
       this.state
 
+    const chartData = this.generatePieChartData()
+
     return isLoader ? (
-      <div className="loader" testid="loader">
+      <div className="loader" data-testid="loader">
         <Loader type="Oval" color="#ffffff" height={50} width={50} />
       </div>
     ) : (
@@ -156,11 +159,10 @@ class TeamMatches extends Component {
                 innerRadius="40%"
                 outerRadius="70%"
                 dataKey="value"
-                nameKey = "name"
               >
-                <Cell name="Won" fill="#fecba6" />
-                <Cell name="Lost" fill="#b3d23f" />
-                <Cell name="Draw" fill="#a44c9e" />
+                {chartData.map((entry, index) => (
+                  <Cell key={index} name={entry.name} fill={entry.color} />
+                ))}
               </Pie>
               <Legend
                 iconType="circle"

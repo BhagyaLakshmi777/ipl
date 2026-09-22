@@ -9,7 +9,6 @@
 .team-banner-container {
   height: 300px;
   width: 90vw;
-  border: 1px solid blue;
 }
 .banner {
   width: 100%;
@@ -22,7 +21,7 @@
 }
 .match-card-container {
   width: 90%;
-  border: 1px solid white;
+
   padding: 0px;
   display: flex;
   flex-wrap: wrap;
@@ -30,8 +29,12 @@
 }
 .pie-container {
   height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }
-.cell{
+.cell {
   margin-left: 30px;
 }
 @media screen and (max-width: 767px) {

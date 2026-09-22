@@ -17,8 +17,7 @@ const LatestMatch = props => {
     venue,
     id,
   } = latestMatchDetailsCard
-  const competing_team = competingTeam
-  const competing_team_logo = competingTeamLogo
+  
   return (
     <div className="latest-match-container">
       <div className="latest-match">
@@ -30,8 +29,8 @@ const LatestMatch = props => {
         </div>
         <div className="competing-team-container">
           <img
-            src={competing_team_logo}
-            alt={`latest match ${competing_team}`}
+            src={competingTeamLogo}
+            alt={`latest match ${competingTeam}`}
             className="competing-team-logo"
           />
         </div>

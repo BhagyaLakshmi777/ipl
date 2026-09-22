@@ -10,14 +10,12 @@ const LatestMatch = props => {
     date,
     firstInnings,
     manOfTheMatch,
-    matchStatus,
     result,
     secondInnings,
     umpires,
     venue,
-    id,
   } = latestMatchDetailsCard
-  
+
   return (
     <div className="latest-match-container">
       <div className="latest-match">

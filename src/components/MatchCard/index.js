@@ -6,7 +6,7 @@ const MatchCard = props => {
   const {competingTeam, competingTeamLogo, result, matchStatus} = matchDetails
   const isWon = matchStatus === 'Won'
   const matchStatusClassName = isWon ? 'match-won-status' : 'match-lost-status'
-  
+
   return (
     <li className="match-list-item">
       <img

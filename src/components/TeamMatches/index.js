@@ -85,10 +85,12 @@ class TeamMatches extends Component {
       isLoader: false,
     })
   }
+
   onClickBack = () => {
     const {history} = this.props
     history.replace('/')
   }
+
   generatePieChartData = () => {
     const {latestMatchDetails, recentMatches} = this.state
     let won = 0
@@ -113,12 +115,12 @@ class TeamMatches extends Component {
     })
 
     return [
-
       {name: 'Won', value: won, color: 'blue'},
       {name: 'Lost', value: lost, color: 'green'},
       {name: 'Draw', value: draw, color: 'white'},
     ]
   }
+
   render() {
     const {latestMatchDetails, recentMatches, teamBannerUrl, isLoader} =
       this.state
@@ -160,8 +162,8 @@ class TeamMatches extends Component {
                 outerRadius="70%"
                 dataKey="value"
               >
-                {chartData.map((entry, index) => (
-                  <Cell key={index} name={entry.name} fill={entry.color} />
+                {chartData.map(entry => (
+                  <Cell name={entry.name} fill={entry.color} />
                 ))}
               </Pie>
               <Legend
